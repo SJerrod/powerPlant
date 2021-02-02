@@ -1,46 +1,53 @@
-class Plant {
-  constructor() {
-    this.water = 0;
-    this.soil = 0;
-    this.light = 0;
-  }
-}
+// export function storeState(), stateControl(), changeState(), feed, blueFood, hydrate, superWater, lighten, sunshine;
 
-const changeState = (prop) => {
+// This function stores our state.
+export const storeState = () => {
+  let currentState = {};
+  return (stateChangeFunction = state => state) => {
+    const newState = stateChangeFunction(currentState);
+    currentState = {...newState};
+    return newState;
+  };
+};
+
+export const stateControl = storeState();
+
+// This is a function factory.
+export const changeState = (prop) => {
   return (value) => {
     return (state) => ({
       ...state,
       [prop]: (state[prop] || 0) + value
-    })
-  }
-}
+    });
+  };
+};
 
-const storeState = () => {
-  let currentState = {};
-  return (stateChangeFunction) => {
-    const newState = stateChangeFunction(currentState);
-    currentState = {...newState};
-    return newState;
-  }
-}
+//functions using our function factory.
+export const feed = changeState("soil")(1);
+export const blueFood = changeState("soil")(5);
 
-const stateControl = storeState();
-const fedPlant = stateControl(blueFood);
-> { soil: 5}
-blueFood(currentState) // invokes:
+export const water = changeState("water")(1);
+export const superWater = changeState("water")(5);
+
+export const light = changeState("light")(1);
+export const sunshine = changeState("light")(5);
+
+// const feed = changeState("soil");
+// const hydrate = changeState("water");
+// const giveLight = changeState("light");
+
+// const blueFood = changeState("soil")(5);
+// blueFood(state)
+// const greenFood = changeState("soil")(10);
+// const yuckyFood = changeState("soil")(-5);
+
+// const fedPlant = stateControl(blueFood);
+// > { soil: 5}
+// blueFood(currentState) // invokes:
 // (state) => ({
 //   ...state,
 //   ["soil"] : (state["soil"] || 0) + 5
 // })
-
-const feed = changeState("soil");
-const hydrate = changeState("water");
-const giveLight = changeState("light");
-
-const blueFood = changeState("soil")(5);
-blueFood(state)
-const greenFood = changeState("soil")(10);
-const yuckyFood = changeState("soil")(-5);
 
 // examples
 // used our function to easily create more specific functions for each kind of property
