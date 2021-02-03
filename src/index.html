@@ -12,17 +12,34 @@
 <body>
   <div class="container">
     <div class="grow-buttons">
+      <select name="plant" id="plant">
+        <option value="fern">fern</option>
+        <option value="cactus">cactus</option>
+        <option value="succulent">succulent</option>
+      </select>
       <hr />
-      <button class="btn-success>" id="feed">Add Soil</button>
+      <button class="btn-success>" id="feed">Feed</button>
+      <button class="btn-success>" id="blueFood">Feed Blue</button>
+      <br /><br />
       <button class="btn-success>" id="water">Water</button>
-      <button class="btn-success>" id="light">Lighten</button>
+      <button class="btn-success>" id="superWater">Super Water</button>
+      <br /><br />
+      <button class="btn-success>" id="light">UV Light</button>
+      <button class="btn-success>" id="sunshine">Sunshine</button>
+      <br /><br />
       <button class="btn-success>" id="show-state">Current Stats</button>
+      <button class="btn-success>" id="show-state2">pinetree Stats</button>
     </div>
     <br />
     <h1>Your Plant's Values</h1>
     <h3><div id="soil-value">Soil: 0</div></h3>
     <h3><div id="water-value">Water: 0</div></h3>
     <h3><div id="light-value">Light: 0</div></h3>
+
+    <h1>Your PineTree's Values</h1>
+    <h3><div id="soil-value2">Soil: 0</div></h3>
+    <h3><div id="water-value2">Water: 0</div></h3>
+    <h3><div id="light-value2">Light: 0</div></h3>
   </div>
 </body>
 </html>

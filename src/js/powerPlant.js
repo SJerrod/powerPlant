@@ -1,8 +1,6 @@
-// export function storeState(), stateControl(), changeState(), feed, blueFood, hydrate, superWater, lighten, sunshine;
-
 // This function stores our state.
-export const storeState = () => {
-  let currentState = {};
+export const storeState = (initialState) => {
+  let currentState = initialState;
   return (stateChangeFunction = state => state) => {
     const newState = stateChangeFunction(currentState);
     currentState = {...newState};
@@ -10,7 +8,8 @@ export const storeState = () => {
   };
 };
 
-export const stateControl = storeState();
+export const stateControl = storeState({soil: 0, water: 0, light: 0});
+export const pineTreeControl = storeState({soil: 5, water: 2, light: 1000});// added
 
 // This is a function factory.
 export const changeState = (prop) => {
